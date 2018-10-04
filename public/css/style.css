@@ -8,20 +8,17 @@ body {
 
 .container {
     width: 100%;
-    /*background: #f1f2ea;*/
     float: left;
     margin-top: 50px;
     margin-right: -20px;
 }
 .left {
-    /*background: #f1f2ba;*/
     margin-right: 20px;
     text-align: right;
     float: left;
   	width: 40%;
 }
 .right {
-    /*background: #a2f2ca;*/
     width: 50%;
     float: left;
 }
