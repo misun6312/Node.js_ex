@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-responsive.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    script(src='/bootstrap/js/bootstrap.min.js')
+  body
+    .container
+      .left
+        form(action='/' method='post')
+          p
+            | First Name
+            input(type='text' required name='firstname' placeholder='First Name')
+          p
+            | Last Name
+            input(type='text' required name='lastname' placeholder='Last Name')
+          p
+            | Address
+            input(type='text' name='address')
+          p
+            | Company          
+            input(type='text' name='company' placeholder='Company')      
+          p
+            | Salary     
+            input(type='text' name='salary')
+          p
+            input(type='submit')
+      .right
+        table.table.table-default.table-striped.table-bordered
+          thead
+            tr
+              th Name
+              th Company
+              th Salary
+          tbody
+            - each row in people
+              tr
+                td= row.first_name + ' ' + row.last_name
+                td= row.company
+                td= row.salary
+      
