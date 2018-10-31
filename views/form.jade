@@ -40,4 +40,18 @@ html
                 td= row.first_name + ' ' + row.last_name
                 td= row.company
                 td= row.salary
-      
+      .left
+        p
+      .cost-form
+        form(action='/cost' method='post')
+          h4 Company Cost
+          p
+            input(type='text' required name='company' placeholder='Company')
+            input(type='submit' value='Calculate')
+          if (cost) == 'null' 
+            p 
+              | No data for this company.
+          else
+            p 
+              | The average salary is 
+              strong !{cost}.

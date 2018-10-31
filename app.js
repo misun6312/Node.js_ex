@@ -46,9 +46,28 @@ app.get('/', function(req,res){
 	      res.status(500).send('Internal Server Error');
 	    }
 	    else{
-	      res.render('form', {people: results});
+  	      if (req.query.cost != undefined) {
+		    cost_val = req.query.cost
+	        res.render('form', {people: results, cost: cost_val});
+		  } else{
+	        res.render('form', {people: results});
+	  	  }
 	    }
 	});
+})
+
+app.post('/cost', function(req, res){
+	var company = req.body.company;
+	// select company, avg(salary) as cost from people group by company;
+	var sql = 'SELECT avg(salary) as cost from people where company=?'
+  connection.query(sql, company, function(err, result, fields){
+    if(err){
+      console.log(err);
+      res.status(500).send('Internal Server Error');
+    } else {
+      res.redirect('/?cost='+result[0].cost);
+    }
+  });	
 })
 
 
